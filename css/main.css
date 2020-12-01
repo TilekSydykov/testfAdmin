@@ -1,0 +1,18 @@
+body{
+    overflow: hidden;
+}
+
+nav{
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.app{
+    position: absolute;
+    width: 100vw;
+    overflow-y: auto;
+    padding-top: 30px;
+}
+
+.hidden{
+    display: none !important;
+}
