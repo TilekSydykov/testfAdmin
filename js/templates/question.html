@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header" id="f{{id}}">
+        <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#d{{id}}" aria-expanded="true" aria-controls="d{{id}}">
+                {{content}}
+            </button>
+        </h2>
+    </div>
+
+    <div id="d{{id}}" class="collapse" aria-labelledby="f{{id}}" data-parent="#questions">
+        <div class="card-body">
+            <form id="add_question">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Question</label>
+                            <input type="text" class="form-control" value="{{content}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Level</label>
+                            <input type="text" class="form-control"  value="{{level}}">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

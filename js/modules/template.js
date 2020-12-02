@@ -8,16 +8,16 @@ export class Template {
             if (typeof templates[html] !== "undefined"){
                 let f = templates[html];
                 for (let p in settings){
-                    f = f.replace(`{{${p}}}`, settings[p])
+                    f = f.replaceAll(`{{${p}}}`, settings[p])
                 }
+
                 resolve(f)
             }else{
                 fetch(html).then(e => {
                     e.text().then(f => {
-
                         templates[html] = f;
                         for (let p in settings){
-                            f = f.replace(`{{${p}}}`, settings[p])
+                            f = f.replaceAll(`{{${p}}}`, settings[p])
                         }
                         resolve(f)
                     })
@@ -36,7 +36,7 @@ export class Template {
                 array.forEach(i =>{
                     f = templates[html];
                     for (let p in i){
-                        f =  f.replace(`{{${p}}}`, i[p])
+                        f =  f.replaceAll(`{{${p}}}`, i[p])
                     }
                     res += f;
                 });
@@ -49,10 +49,11 @@ export class Template {
                         array.forEach(i =>{
                             f = templates[html];
                             for (let p in i){
-                                f =  f.replace(`{{${p}}}`, i[p])
+                                f =  f.replaceAll(`{{${p}}}`, i[p])
                             }
                             res += f;
                         });
+
                         resolve(res)
                     })
                 })
@@ -68,6 +69,14 @@ export class Template {
         main: {
             name: 'main',
             container: '#main'
+        },
+        testPage: {
+            name: 'testPage',
+            container: "#questions"
+        },
+        question: {
+            name: 'question',
+            container: null
         }
     }
 }

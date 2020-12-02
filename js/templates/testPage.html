@@ -1,0 +1,76 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <div class="card">
+        <div class="card-body">
+            <form id="test_form">
+                <input type="hidden" name="id" value="{{id}}">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="name">Test name</label>
+                            <input type="text" class="form-control" name="title" id="name" value="{{title}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="summary">Summary</label>
+                            <input type="text" class="form-control" name="summary" id="summary" value="{{summary}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="text" class="form-control" name="startsAt" id="startDate" value="{{startsAt}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="text" class="form-control" name="endsAt" id="endDate" value="{{endsAt}}">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="accordion" id="d">
+        <div class="card">
+            <div class="card-header" id="add_card">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#df" aria-expanded="true" aria-controls="df">
+                        Add Question
+                    </button>
+                </h2>
+            </div>
+
+            <div id="df" class="collapse" aria-labelledby="add_card" data-parent="#d">
+                <div class="card-body">
+                    <form id="add_question">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Question</label>
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <input type="text" class="form-control"  value="">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion" id="questions">
+
+    </div>
+</div>

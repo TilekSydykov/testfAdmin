@@ -11,13 +11,29 @@ const app = $('#app');
 const database = new Database();
 const loader = new Loader(app);
 const init = new Initializer($, loader);
+
 window.$ = $;
 $(document).ready(e =>{
-    if(database.isLoggedIn()){
-        loader.loadMain()
-    }else {
-        loader.loadLogin()
-    }
+    index();
 });
 
+window.loader = $('#main-spinner');
+
+window.beginLoading = ()=>{
+    window.loader.removeClass("hidden");
+};
+
+window.stopLoading = () => {
+    window.loader.addClass('hidden');
+};
+
+function index() {
+    if(database.isLoggedIn()){
+        loader.loadMain(loader)
+    }else {
+        loader.loadLogin(loader)
+    }
+}
+
+$('#logo').click(index);
 

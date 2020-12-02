@@ -9,7 +9,9 @@ export class Api {
         'signup' : '/auth/signup',
         'updateAccount' : '/account/update',
         'getTests' : '/tests',
-        'getTestById' : '/tests/{id}'
+        'getTestById' : '/tests/{id}',
+        'createTest': '/tests',
+        'saveTest': '/tests/{id}'
     };
 
     init() {
@@ -30,7 +32,7 @@ export class Api {
     }
 
     login(name, password){
-        let database = this.database;
+        let database = new Database();
         return new Promise((resolve, reject) => {
             console.log(baseUrl + this.getUrl("login"))
             $.ajax(baseUrl + this.getUrl("login"), {
@@ -59,6 +61,71 @@ export class Api {
                     resolve(e)
                 }
             });
+        })
+    }
+
+    getTestsById(id){
+        let database = new Database();
+        return new Promise((resolve, reject) =>{
+            $.ajax({
+                beforeSend: function (request) {
+                    request.setRequestHeader("token", database.getToken());
+                },
+                url: baseUrl + this.getUrl("getTestById").replace("{id}", id),
+                success: e => {
+                    resolve(e)
+                }
+            });
+        })
+    }
+
+    createTest(name, type){
+        let database = new Database();
+        return new Promise((resolve, reject) =>{
+            $.ajax({
+                beforeSend: function (request) {
+                    request.setRequestHeader("token", database.getToken());
+                },
+                type: 'PUT',
+                url: baseUrl + this.getUrl("createTest"),
+                data: {title: name, type: type},
+                statusCode: {
+                    200: e =>{
+                        resolve(e);
+                    },
+                    404: e=>{
+                        resolve(e);
+                    },
+                    500: e => {
+                        resolve(e);
+                    }
+                }
+            })
+        })
+    }
+
+    saveTest(id, data){
+        let database = new Database();
+        return new Promise((resolve, reject) =>{
+            $.ajax({
+                beforeSend: function (request) {
+                    request.setRequestHeader("token", database.getToken());
+                },
+                type: 'PUT',
+                url: baseUrl + this.getUrl("saveTest").replace('{id}', id),
+                data: data,
+                statusCode: {
+                    200: e =>{
+                        resolve(e);
+                    },
+                    404: e=>{
+                        resolve(e);
+                    },
+                    500: e => {
+                        resolve(e);
+                    }
+                }
+            })
         })
     }
 }

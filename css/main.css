@@ -1,5 +1,6 @@
 body{
-    overflow: hidden;
+    overflow-x: hidden;
+    padding-bottom: 100px;
 }
 
 nav{
@@ -7,12 +8,21 @@ nav{
 }
 
 .app{
-    position: absolute;
-    width: 100vw;
-    overflow-y: auto;
-    padding-top: 30px;
+    margin-top: 10px;
 }
 
 .hidden{
     display: none !important;
 }
+
+.clickable{
+     cursor: pointer;
+    transition: 0.5s;
+}
+
+.clickable:hover{
+    text-shadow: 5px 5px 2px #c3c3c3;
+}
+
+
+
